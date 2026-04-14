@@ -1,6 +1,5 @@
 package com.ifpr.androidapptemplate.ui.home
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +10,6 @@ import androidx.fragment.app.Fragment
 import android.util.Base64
 import android.widget.*
 import android.graphics.BitmapFactory
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.widget.SwitchCompat
 import com.bumptech.glide.Glide
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -65,7 +62,7 @@ class HomeFragment : Fragment() {
                         val imageView = itemView.findViewById<ImageView>(R.id.item_image)
                         val enderecoView = itemView.findViewById<TextView>(R.id.item_endereco)
 
-                        enderecoView.text = "Endereço: ${item.endereco ?: "Não informado"}"
+                        enderecoView.text = "Descrição do administrador de tempo: ${item.adminDescription ?: "Não informado"}"
 
                         if (!item.imageUrl.isNullOrEmpty()) {
                             Glide.with(container.context).load(item.imageUrl).into(imageView)
