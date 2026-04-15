@@ -3,7 +3,9 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp">
+    android:padding="8dp"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/image_border">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -11,35 +13,57 @@
         android:layout_height="wrap_content"
         android:padding="8dp">
 
+        <!-- IMAGEM -->
         <ImageView
             android:id="@+id/item_image"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
             android:scaleType="centerCrop"
-            android:layout_marginEnd="8dp" />
+            android:layout_marginEnd="12dp" />
 
+        <!-- TEXTO -->
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
+            <!-- NOME -->
             <TextView
-                android:id="@+id/item_endereco"
+                android:id="@+id/item_nome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Endereço:"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:text="Nome do Administrador"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary" />
 
-            <!-- Campos futuros aqui -->
+            <!-- TEMPO -->
+            <TextView
+                android:id="@+id/item_tempo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tempo: 60 min"
+                android:textColor="@color/text_primary"
+                android:layout_marginTop="4dp" />
+
+            <!-- DESCRIÇÃO -->
+            <TextView
+                android:id="@+id/item_descricao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Descrição aqui"
+                android:textColor="@color/text_secondary"
+                android:layout_marginTop="4dp" />
+
         </LinearLayout>
     </LinearLayout>
 
+    <!-- LINHA DIVISÓRIA -->
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#CCCCCC"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"/>
+        android:background="#444"
+        android:layout_marginTop="8dp" />
+
 </LinearLayout>
