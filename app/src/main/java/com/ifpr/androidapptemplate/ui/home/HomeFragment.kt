@@ -60,9 +60,13 @@ class HomeFragment : Fragment() {
                             .inflate(R.layout.item_template, container, false)
 
                         val imageView = itemView.findViewById<ImageView>(R.id.item_image)
-                        val enderecoView = itemView.findViewById<TextView>(R.id.item_endereco)
+                        val descriptionView = itemView.findViewById<TextView>(R.id.adminDescription)
+                        val relogioView = itemView.findViewById<TextView>(R.id.nomeRelogio)
+                        val limiteView = itemView.findViewById<TextView>(R.id.tempoAdministrador)
 
-                        enderecoView.text = "Descrição do administrador de tempo: ${item.adminDescription ?: "Não informado"}"
+                        descriptionView.text = "Descrição do administrador de tempo: ${item.adminDescription ?: "Não informado"}"
+                        relogioView.text = "Limitador: ${item.nomeRelogio ?: "Não informado"}"
+                        limiteView.text = "Tempo limite: ${item.tempoAdministrador ?: "Não informado"}"
 
                         if (!item.imageUrl.isNullOrEmpty()) {
                             Glide.with(container.context).load(item.imageUrl).into(imageView)
