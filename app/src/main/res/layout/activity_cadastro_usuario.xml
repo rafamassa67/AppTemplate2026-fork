@@ -2,80 +2,123 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
-    android:fitsSystemWindows="true"
-    tools:context=".ui.usuario.CadastroUsuarioActivity">
+    android:padding="16dp"
+    android:background="@color/background"
+    android:fitsSystemWindows="true">
 
+    <!-- TÍTULO -->
+
+    <!-- NOME -->
     <TextView
         android:id="@+id/textCadastroUsuarioTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:text="Cadastro de Usuário"
-        android:textSize="24sp"
+        android:textColor="@color/primary"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- EMAIL -->
+
+    <!-- SENHA -->
+
+    <!-- CONFIRMAR SENHA -->
     <EditText
         android:id="@+id/registerNameEditText"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="52dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/input_bg_white"
         android:hint="Nome"
-        android:layout_marginTop="16dp"
+        android:padding="14dp"
+        android:textColor="#000000"
+        android:textColorHint="#777777"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textCadastroUsuarioTitle"/>
-
-    <EditText
-        android:id="@+id/registerEmailEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        app:layout_constraintTop_toBottomOf="@id/registerNameEditText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <EditText
-        android:id="@+id/registerPasswordEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Senha"
-        android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@id/registerEmailEditText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/textCadastroUsuarioTitle" />
 
     <EditText
         android:id="@+id/registerConfirmPasswordEditText"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="52dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/input_bg_white"
         android:hint="Confirmar Senha"
         android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@id/registerPasswordEditText"
+        android:padding="14dp"
+        android:textColor="#000000"
+        android:textColorHint="#777777"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/registerPasswordEditText" />
 
+    <EditText
+        android:id="@+id/registerEmailEditText"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/input_bg_white"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:padding="14dp"
+        android:textColor="#000000"
+        android:textColorHint="#777777"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/registerNameEditText" />
+
+    <EditText
+        android:id="@+id/registerPasswordEditText"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/input_bg_white"
+        android:hint="Senha"
+        android:inputType="textPassword"
+        android:padding="14dp"
+        android:textColor="#000000"
+        android:textColorHint="#777777"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/registerEmailEditText" />
+
+    <!-- BOTÃO CADASTRAR -->
     <Button
         android:id="@+id/salvarButton"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="58dp"
         android:text="Cadastrar"
+        android:textStyle="bold"
+        android:backgroundTint="@color/primary"
+        android:textColor="#000000"
         app:layout_constraintTop_toBottomOf="@id/registerConfirmPasswordEditText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"/>
 
+    <!-- BOTÃO SAIR -->
     <Button
         android:id="@+id/sairButton"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="58dp"
         android:text="Sair"
+        android:textStyle="bold"
+        android:backgroundTint="@color/card"
+        android:textColor="@color/text_primary"
         app:layout_constraintTop_toBottomOf="@id/salvarButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
