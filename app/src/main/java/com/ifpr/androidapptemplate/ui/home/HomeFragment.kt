@@ -45,6 +45,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
 
     private lateinit var currentAddressTextView: TextView
+    private lateinit var distanceTextView: TextView
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var locationCallback: LocationCallback
     private lateinit var locationRequest: LocationRequest
@@ -79,7 +80,7 @@ class HomeFragment : Fragment() {
 
     private fun inicializaGerenciamentoLocalizacao(view: View) {
         currentAddressTextView = view.findViewById(R.id.currentAddressTextView)
-
+        distanceTextView = view.findViewById(R.id.distanceTextView)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
 
         if (ActivityCompat.checkSelfPermission(
@@ -165,13 +166,25 @@ class HomeFragment : Fragment() {
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val address = addresses?.firstOrNull()?.getAddressLine(0) ?: "Address not found"
+                val address = addresses?.firstOrNull()?.getAddressLine(0) ?: "Endereço não encontrado"
+
                 withContext(Dispatchers.Main) {
                     currentAddressTextView.text = address
+
+                    val destino = Location("").apply {
+                        latitude = -25.0945
+                        longitude = -50.1633
+                    }
+
+                    val distanciaMetros = location.distanceTo(destino)
+                    val distanciaKm = distanciaMetros / 1000
+
+                    distanceTextView.text = "Distância até o ponto: %.2f km".format(distanciaKm)
                 }
+
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    currentAddressTextView.text = "Error: ${e.message}"
+                    currentAddressTextView.text = "Erro: ${e.message}"
                 }
             }
         }
