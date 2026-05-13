@@ -6,4 +6,5 @@ data class Item(
     val adminDescription: String? = null,
     val tempoAdministrador: Int? = null,
     val nomeRelogio: String? = null,
+    val tipoAdministrador: String? = null
 )

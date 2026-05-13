@@ -17,26 +17,24 @@
         android:textColor="@color/primary"
         android:textSize="28sp"
         android:textStyle="bold"
+        android:layout_marginTop="24dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- IMAGEM -->
     <ImageView
         android:id="@+id/image_item"
         android:layout_width="110dp"
         android:layout_height="110dp"
-        android:contentDescription="Store Photo"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/image_border"
+        android:padding="8dp"
         android:scaleType="centerCrop"
         android:src="@android:drawable/ic_menu_camera"
         app:layout_constraintTop_toBottomOf="@id/text_dashboard"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/image_border"
-        android:padding="8dp"
-        />
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- BOTÃO IMAGEM -->
     <Button
@@ -44,27 +42,77 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Selecionar Imagem"
-        android:backgroundTint="@color/card"
-        android:textColor="@color/text_primary"
+        android:textColor="#000000"
+        android:backgroundTint="@color/primary"
+        android:layout_marginTop="12dp"
         app:layout_constraintTop_toBottomOf="@id/image_item"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="12dp"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- CAIXA DO TIPO -->
+    <LinearLayout
+        android:id="@+id/tipoBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/image_border"
+        android:padding="12dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/button_select_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tipo do administrador"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_gravity="center"/>
+
+        <RadioGroup
+            android:id="@+id/tipoGrupo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp">
+
+            <RadioButton
+                android:id="@+id/radioLimitador"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Limitador"
+                android:textColor="@color/text_primary"
+                android:buttonTint="@color/primary"
+                android:checked="true"/>
+
+            <RadioButton
+                android:id="@+id/radioLembrete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lembrete"
+                android:textColor="@color/text_primary"
+                android:buttonTint="@color/primary"
+                android:layout_marginStart="24dp"/>
+        </RadioGroup>
+    </LinearLayout>
 
     <!-- NOME -->
     <EditText
         android:id="@+id/nomeRelogio"
         android:layout_width="0dp"
         android:layout_height="52dp"
-        android:hint="Nomeie o seu administrador de tempo"
+        android:hint="Nomeie o seu administrador"
         android:background="@drawable/input_bg_white"
         android:textColor="#000000"
         android:textColorHint="#777777"
         android:padding="14dp"
-        app:layout_constraintTop_toBottomOf="@id/button_select_image"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/tipoBox"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- TEMPO -->
     <EditText
@@ -77,25 +125,25 @@
         android:textColor="#000000"
         android:textColorHint="#777777"
         android:padding="14dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintTop_toBottomOf="@id/nomeRelogio"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="12dp"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- DESCRIÇÃO -->
     <EditText
         android:id="@+id/adminDescription"
         android:layout_width="0dp"
         android:layout_height="52dp"
-        android:hint="Descrição do limitador"
+        android:hint="Descrição"
         android:background="@drawable/input_bg_white"
         android:textColor="#000000"
         android:textColorHint="#777777"
         android:padding="14dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintTop_toBottomOf="@id/tempoAdministrador"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="12dp"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- BOTÃO SALVAR -->
     <Button
@@ -104,11 +152,11 @@
         android:layout_height="60dp"
         android:text="Salvar"
         android:textStyle="bold"
-        android:backgroundTint="@color/primary"
         android:textColor="#000000"
+        android:backgroundTint="@color/primary"
+        android:layout_marginTop="24dp"
         app:layout_constraintTop_toBottomOf="@id/adminDescription"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

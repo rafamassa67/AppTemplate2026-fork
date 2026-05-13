@@ -23,6 +23,7 @@ class DashboardFragment : Fragment() {
     private lateinit var tempoEditText: EditText
     private lateinit var descricaoEditText: EditText
     private lateinit var itemImageView: ImageView
+    private lateinit var tipoGrupo: RadioGroup
 
     private lateinit var salvarButton: Button
     private lateinit var selectImageButton: Button
@@ -37,7 +38,9 @@ class DashboardFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
 
         val view = inflater.inflate(R.layout.fragment_dashboard, container, false)
@@ -49,6 +52,8 @@ class DashboardFragment : Fragment() {
         itemImageView = view.findViewById(R.id.image_item)
         salvarButton = view.findViewById(R.id.salvarItemButton)
         selectImageButton = view.findViewById(R.id.button_select_image)
+
+        tipoGrupo = view.findViewById(R.id.tipoGrupo)
 
         auth = FirebaseAuth.getInstance()
 
@@ -75,15 +80,30 @@ class DashboardFragment : Fragment() {
         val tempo = tempoEditText.text.toString().trim().toIntOrNull()
         val descricao = descricaoEditText.text.toString().trim()
 
+        val tipo = if (tipoGrupo.checkedRadioButtonId == R.id.radioLimitador) {
+            "Limitador"
+        } else {
+            "Lembrete"
+        }
+
         if (nome.isEmpty() || tempo == null || descricao.isEmpty() || imageUri == null) {
-            Toast.makeText(context, "Preencha todos os campos corretamente", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                context,
+                "Preencha todos os campos corretamente",
+                Toast.LENGTH_SHORT
+            ).show()
             return
         }
 
-        uploadImageToFirebase(nome, tempo, descricao)
+        uploadImageToFirebase(nome, tempo, descricao, tipo)
     }
 
-    private fun uploadImageToFirebase(nome: String, tempo: Int, descricao: String) {
+    private fun uploadImageToFirebase(
+        nome: String,
+        tempo: Int,
+        descricao: String,
+        tipo: String
+    ) {
         if (imageUri != null) {
 
             val inputStream = context?.contentResolver?.openInputStream(imageUri!!)
@@ -97,7 +117,8 @@ class DashboardFragment : Fragment() {
                     base64Image = base64Image,
                     adminDescription = descricao,
                     tempoAdministrador = tempo,
-                    nomeRelogio = nome
+                    nomeRelogio = nome,
+                    tipoAdministrador = tipo
                 )
 
                 saveItemIntoDatabase(item)
@@ -105,7 +126,11 @@ class DashboardFragment : Fragment() {
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    override fun onActivityResult(
+        requestCode: Int,
+        resultCode: Int,
+        data: Intent?
+    ) {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == PICK_IMAGE_REQUEST &&
@@ -119,7 +144,8 @@ class DashboardFragment : Fragment() {
 
     private fun saveItemIntoDatabase(item: Item) {
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("itens")
+        databaseReference =
+            FirebaseDatabase.getInstance().getReference("itens")
 
         val itemId = databaseReference.push().key
 
@@ -129,10 +155,18 @@ class DashboardFragment : Fragment() {
                 .child(itemId)
                 .setValue(item)
                 .addOnSuccessListener {
-                    Toast.makeText(context, "Salvo com sucesso!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        context,
+                        "Salvo com sucesso!",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
                 .addOnFailureListener {
-                    Toast.makeText(context, "Erro ao salvar", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        context,
+                        "Erro ao salvar",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
         }
     }
