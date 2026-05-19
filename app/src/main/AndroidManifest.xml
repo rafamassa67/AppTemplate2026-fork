@@ -16,6 +16,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidAppTemplate"
         tools:targetApi="31">
+        <service
+            android:name=".service.AppBlockAccessibilityService"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            android:exported="false">
+
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_config"/>
+        </service>
         <activity
             android:name=".ui.login.LoginActivity"
             android:exported="true"
